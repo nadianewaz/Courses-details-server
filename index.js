@@ -19,14 +19,13 @@ async function run(){
   // *** FOR CREATE COURSES ***
     app.post('/createCourse',  async (req, res) =>{
       const name = req.body;
-      console.log(req.body.created_by);
+      // console.log(req.body.created_by); 
         
        const createCourse = await prisma.class.create({
             data: {
               created_by: req.body.created_by,
               updated_by: req.body.updated_by,
               name_en: req.body.name_en,
-
               name_bn: req.body.name_bn,
             },
           })
@@ -34,7 +33,7 @@ async function run(){
         console.log(name); 
         console.log(createCourse); 
         res.status(201).json({
-        newCourses 
+        
 
         })
       });
@@ -56,10 +55,10 @@ async function run(){
     const demo = await prisma.class.update({  
       
       where: {
-        id: 18
+        id: 14
       },
       data: {
-        created_by: 'dd',
+        created_by: 'sadia rahman',
       },
     })
     console.log(demo) 
@@ -76,7 +75,7 @@ async function run(){
     const mysql_del = await prisma.class.delete({  
       
       where: {
-        id: 23
+        id: 14
       },
     })
     console.log(mysql_del)
