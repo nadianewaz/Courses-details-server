@@ -32,10 +32,10 @@ async function run(){
         
         console.log(name); 
         console.log(createCourse); 
-        res.status(201).json({
-        
+        res.status(201).json( {
+          "name_bn" : "bng"
 
-        })
+        } )
       });
 
   // *** FOR READ COURSES ***
@@ -43,9 +43,9 @@ async function run(){
     
   const readCourse = await prisma.class.findMany()
   console.log(readCourse); 
-      res.status(207).json({
-      
-      })
+      res.status(207).json(
+        readCourse
+      )
     });
 
   // *** FOR UPDATED COURSES ***  
@@ -55,17 +55,16 @@ async function run(){
     const demo = await prisma.class.update({  
       
       where: {
-        id: 14
+        id:  parseInt(req.params.id)
       },
-      data: {
-        created_by: 'sadia rahman',
-      },
+      data: req.body
+      
     })
     console.log(demo) 
     console.log(updateCourse); 
-    res.status(209).json({
-      
-      })
+    res.status(209).json(
+      demo
+      )
   });
 
   // *** FOR DELETE COURSES *** 
@@ -75,7 +74,7 @@ async function run(){
     const mysql_del = await prisma.class.delete({  
       
       where: {
-        id: 14
+        id: parseInt(req.params.id)
       },
     })
     console.log(mysql_del)
