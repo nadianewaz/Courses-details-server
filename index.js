@@ -19,7 +19,7 @@ async function run(){
   // *** FOR CREATE COURSES ***
     app.post('/createCourse',  async (req, res) =>{
       const name = req.body;
-      // console.log(req.body.created_by); 
+      console.log(req.body);
         
        const createCourse = await prisma.class.create({
             data: {
@@ -27,6 +27,9 @@ async function run(){
               updated_by: req.body.updated_by,
               name_en: req.body.name_en,
               name_bn: req.body.name_bn,
+              date: req.body.date,
+              location: req.body.location?.currentKey, 
+              radio: req.body.paidstatus
             },
           })
         
@@ -42,7 +45,7 @@ async function run(){
   app.get('/readCourse',  async (req, res) =>{
     
   const readCourse = await prisma.class.findMany()
-  console.log(readCourse); 
+  // console.log(readCourse); 
       res.status(207).json(
         readCourse
       )
@@ -69,20 +72,25 @@ async function run(){
 
   // *** FOR DELETE COURSES *** 
   app.delete('/deleteCourse/:id', async (req, res) =>{
-    const deleteCourse = req.body;
-    console.log( req.params.id);
+  console.log("delete id.......", req.params.id);
+
     const mysql_del = await prisma.class.delete({  
       
       where: {
-        id: parseInt(req.params.id)
-      },
+        id: parseInt(req.params.id)  
+        },
     })
     console.log(mysql_del)
-    console.log(deleteCourse); 
-    res.status(214).json({
-      
-      })
+    res.status(214).json({})
   });
+
+// *** FOR FORM  ***
+
+
+
+
+
+ 
 
 
   }

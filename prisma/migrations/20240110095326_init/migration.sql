@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `Class` ADD COLUMN `date` VARCHAR(191) NULL,
+    ADD COLUMN `location` VARCHAR(191) NULL,
+    ADD COLUMN `radio` VARCHAR(191) NULL;

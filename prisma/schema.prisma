@@ -15,9 +15,12 @@ model Class {
   id            Int         @id @default(autoincrement())
   uuid          String      @default(uuid())
   created_at    DateTime    @default(now())
-  updated_at    DateTime     @default(now())
+  updated_at    DateTime    @default(now())
   created_by    String
   updated_by    String
   name_en       String
   name_bn       String
+  date          String?    
+  location      String?    
+  radio         String?
 }
